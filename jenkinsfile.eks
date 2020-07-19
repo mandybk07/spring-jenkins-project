@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+    tools {
+        maven 'M2'
+        jdk 'jdk1.8'
+    }
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('git checkout'){
+            steps {
+                git credentialsId: 'GIT_Cred', url: 'https://github.com/mandybk07/spring-jenkins-project.git'
+            }
+        }
+
+        stage('compile'){
+            steps {
+                sh label: '', script: 'mvn clean compile'
+            }
+        }
+        stage('Junit Test cases'){
+            steps {
+                sh label: '', script: 'mvn compiler:testCompile -Dfilename=testng-unit.xml surefire:test'
+            }
+            post{
+                always{
+                    step ([$class: 'Publisher'])
+                }
+            }
+        }
+        stage ('Package'){
+            steps {
+                sh label: '', script: 'mvn clean package -DskipTests'
+            }
+        }
+    }
+}
