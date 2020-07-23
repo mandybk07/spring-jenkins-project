@@ -1,86 +1,120 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.kzn</groupId>
-	<artifactId>spring-project</artifactId>
-	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>Spring Project</name>
-	<url>http://maven.apache.org</url>
-
-	<properties>
-		<spring.version>4.3.4.RELEASE</spring.version>
-		<testng.version>6.14.3</testng.version>
-		<selenium.java.version>3.4.0</selenium.java.version>
-		<!-- maven-plugin-version -->
-		<surefire.version>2.22.2</surefire.version>
-		<war.version>3.2.3</war.version>
-		<compiler.version>3.8.1</compiler.version>	
-	</properties>
-
-
-	<dependencies>
-		<!-- Java EE -->
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>7.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<!-- TestNG -->
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>${testng.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>${selenium.java.version}</version>
-		</dependency>
-		<!-- Spring Web MVC -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-
-	</dependencies>
-	<build>
-		<finalName>spring-project</finalName>
-		<!-- KZN Changing the plugin configuration to use Java Version 11 KZN -->
-		<plugins>
-			<!-- KZN Changing the plugin configuration to use Java Version 11 KZN -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${compiler.version}</version>
-				<configuration>
-					<!--<release>11</release> -->  <!--or <release>10</release> -->
-				</configuration>
-			</plugin>
-			<!-- KZN No web.xml file for configuration KZN -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>${war.version}</version>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
-			</plugin>
-			<!-- To run TestNG Test -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${surefire.version}</version>
-				<configuration>
-					<suiteXmlFiles>
-						<suiteXmlFile>${filename}</suiteXmlFile>
-					</suiteXmlFiles>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-</project>
+1 <project xmlns="http://maven.apache.org/POM/4.0.0" 
+2 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+3 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"> 
+4 	<modelVersion>4.0.0</modelVersion> 
+5 	<groupId>net.kzn</groupId> 
+6 	<artifactId>spring-project</artifactId> 
+7 	<packaging>war</packaging> 
+8 	<version>0.0.1-SNAPSHOT</version> 
+9 	<name>Spring Project</name> 
+10 	<url>http://maven.apache.org</url> 
+11 
+ 
+12 	<properties> 
+13 		<spring.version>4.3.4.RELEASE</spring.version> 
+14 		<testng.version>6.14.3</testng.version> 
+15 		<selenium.java.version>3.4.0</selenium.java.version> 
+16 		<!-- maven-plugin-version --> 
+17 		<surefire.version>2.22.2</surefire.version> 
+18 		<war.version>3.2.3</war.version> 
+19 		<compiler.version>3.8.1</compiler.version>	 
+20 		<!-- Cobertura SonarQube Setup --> 
+21 	        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis> 
+22 	        <sonar.java.coveragePlugin>cobertura</sonar.java.coveragePlugin> 
+23                <sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath> 
+24 
+ 
+25 	</properties> 
+26 
+ 
+27 
+ 
+28 	<dependencies> 
+29 		<!-- Java EE --> 
+30 		<dependency> 
+31 			<groupId>javax</groupId> 
+32 			<artifactId>javaee-api</artifactId> 
+33 			<version>7.0</version> 
+34 			<scope>provided</scope> 
+35 		</dependency> 
+36 		<!-- TestNG --> 
+37 		<dependency> 
+38 			<groupId>org.testng</groupId> 
+39 			<artifactId>testng</artifactId> 
+40 			<version>${testng.version}</version> 
+41 			<scope>test</scope> 
+42 		</dependency> 
+43 		<dependency> 
+44 			<groupId>org.seleniumhq.selenium</groupId> 
+45 			<artifactId>selenium-java</artifactId> 
+46 			<version>${selenium.java.version}</version> 
+47 		</dependency> 
+48 		<!-- Spring Web MVC --> 
+49 		<dependency> 
+50 			<groupId>org.springframework</groupId> 
+51 			<artifactId>spring-webmvc</artifactId> 
+52 			<version>${spring.version}</version> 
+53 		</dependency> 
+54 
+ 
+55 	</dependencies> 
+56 	<build> 
+57 		<finalName>spring-project</finalName> 
+58 		<!-- KZN Changing the plugin configuration to use Java Version 11 KZN --> 
+59 		<plugins> 
+60 			<!-- KZN Changing the plugin configuration to use Java Version 11 KZN --> 
+61 			<plugin> 
+62 				<groupId>org.apache.maven.plugins</groupId> 
+63 				<artifactId>maven-compiler-plugin</artifactId> 
+64 				<version>${compiler.version}</version> 
+65 				<configuration> 
+66 					<!--<release>11</release> -->  <!--or <release>10</release> --> 
+67 				</configuration> 
+68 			</plugin> 
+69 			<!-- KZN No web.xml file for configuration KZN --> 
+70 			<plugin> 
+71 				<groupId>org.apache.maven.plugins</groupId> 
+72 				<artifactId>maven-war-plugin</artifactId> 
+73 				<version>${war.version}</version> 
+74 				<configuration> 
+75 					<failOnMissingWebXml>false</failOnMissingWebXml> 
+76 				</configuration> 
+77 			</plugin> 
+78 			<!-- To run TestNG Test --> 
+79 			<plugin> 
+80 				<groupId>org.apache.maven.plugins</groupId> 
+81 				<artifactId>maven-surefire-plugin</artifactId> 
+82 				<version>${surefire.version}</version> 
+83 				<configuration> 
+84 					<suiteXmlFiles> 
+85 						<suiteXmlFile>${filename}</suiteXmlFile> 
+86 					</suiteXmlFiles> 
+87 				</configuration> 
+88 			</plugin> 
+89 			<!-- Cobertura --> 
+90 			<plugin> 
+91 		    <groupId>org.codehaus.mojo</groupId> 
+92 		    <artifactId>cobertura-maven-plugin</artifactId> 
+93 		    <version>2.7</version> 
+94 		    <executions> 
+95 		      <execution> 
+96 		       <id>create-coverage</id> 
+97 		       <phase>test</phase> 
+98 		       <configuration> 
+99 		         <format>html</format> 
+100 		         <format>xml</format> 
+101 		         <maxmem>256m</maxmem> 
+102 		         <aggregate>true</aggregate> 
+103 		         <outputDirectory>${cobertura-maven-plugin.outputDirectory}</outputDirectory> 
+104 		       </configuration> 
+105 		       <goals> 
+106 		         <goal>cobertura</goal> 
+107 		       </goals> 
+108 		       </execution> 
+109 		      </executions> 
+110 		  </plugin> 
+111 
+ 
+112 		</plugins> 
+113 	</build> 
+114 </project> 
