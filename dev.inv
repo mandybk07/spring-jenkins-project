@@ -1,0 +1,6 @@
+[dbserver]
+3.133.130.23
+
+#All servers
+[multi:children]
+dbserver
