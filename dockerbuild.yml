@@ -1,0 +1,19 @@
+---
+- name: run on webserver
+  hosts: dbserver
+  become: true
+  tasks:
+    - name: pull an image
+      docker_image:
+            name: deveops123/spring-project:0.0.1
+            source: pull
+      
+    - name: run container
+      docker_container:
+        name: webapps 
+        image: deveops123/spring-project:0.0.1
+        state: started
+        ports: 
+        - "8090:8080"
+        tty: true
+        detach: true
